@@ -16,9 +16,6 @@ def save_to_file
   file.close
 end
 
-
-require_relative './fizzbuzz'
-
 @filename = File.dirname(__FILE__) + '/first_hundred.txt'
 @first_hundred = (1..100).map { |n| fizzbuzz(n).to_s }
 save_to_file
