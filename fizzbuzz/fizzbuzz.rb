@@ -4,19 +4,35 @@ def fizzbuzz(n)
 	return "Buzz" if n % 5 == 0
 	return n
 end
-#write to the file
-def save_to_file
-	# open the file for writing
-  file = File.open(@filename, "w") 
-  # iterate over the array of students
-  @first_hundred.each do |line|
-  # puts student
-    file.puts line
+
+
+=begin
+###################
+class FizzBuzz
+  def self.is_divisible_by_three?(number)
+      divisible_by?(3,number)
   end
-  file.close
+  def self.is_divisible_by_five?(number)
+      divisible_by?(5,number)
+  end
+    def self.is_divisible_by_fifteen?(number)
+      divisible_by?(15,number)
+  end
+  def self.divisible_by?(divisor, number)
+    number % divisor == 0
+  end
+  def  self.fizzit(number)
+     return "FizzBuzz" if is_divisible_by_fifteen(number)
+     return "fizz" if is_divisible_by_three(number)
+     return "Buzz" if is_divisible_by_five(number)
+     number
+  end
 end
 
-@filename = File.dirname(__FILE__) + '/first_hundred.txt'
-@first_hundred = (1..100).map { |n| fizzbuzz(n).to_s }
-save_to_file
+irb > 1.upto(100) { |num| puts FizzBuzz.fizzit(num) }
 
+self.* class method
+
+gem - library incl in projects
+
+=end
