@@ -4,7 +4,6 @@ The aim of this kata is to implement a FizzBuzz method. The method replaces any 
 
 **Difficulty**: Easy
 
-
 to run the fizzbuzz type in dir:
 ruby fizzbuzz.rb
 
