@@ -1,6 +1,5 @@
 def number_to_roman_numeral(numeral)
-	return  numeral < 1 || numeral > 3999 ? "" : more_letters(numeral) 
-	return 
+	return  numeral < 1 || numeral > 3999 ? "" : more_letters(numeral)  
 end
 
 def more_letters(numeral)
