@@ -26,7 +26,6 @@ end
 
 def on_the_left_less?(chars,n)
 	return chars[n+1] != nil && chars[n] >= chars[n+1]
-	
 end
 
 def on_the_right_greater?(chars,n)

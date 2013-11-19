@@ -1,7 +1,14 @@
+def devisible_by_3?(number)
+  number % 3 == 0
+end
+def devisible_by_5?(number)
+  number % 5 == 0
+end
+
 def fizzbuzz(n)
-	return "FizzBuzz" if n % 3 == 0 && n % 5 == 0
-	return "Fizz" if n % 3 == 0
-	return "Buzz" if n % 5 == 0
+	return "FizzBuzz" if devisible_by_3? && is_divisible_by_five?
+	return "Fizz" if devisible_by_3?
+	return "Buzz" if is_divisible_by_5?
 	return n
 end
 
