@@ -9,8 +9,8 @@ def devisible_by_15?(number)
 end
 
 def fizzbuzz(number)
-	return "FizzBuzz" if devisible_by_15?(number)
-	return "Fizz" if devisible_by_3?(number)
-	return "Buzz" if divisible_by_5?(number)
-	return number
+  return "FizzBuzz" if devisible_by_15?(number)
+  return "Fizz" if devisible_by_3?(number)
+  return "Buzz" if divisible_by_5?(number)
+  return number
 end
