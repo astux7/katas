@@ -9,7 +9,7 @@ describe 'numbers to words' do
     end
 
     it "handles zero appropriately" do
-      expect(number_to_words(0)).to eq ""
+      expect(number_to_words(0)).to eq "zero"
     end
   end
 
