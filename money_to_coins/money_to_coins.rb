@@ -1,32 +1,27 @@
+PENNY = [50,20,10,5,2,1]
+MONETS = [2,1]
+
 def money_to_coins(amount)
-  penny = [50,20,10,5,2,1]
-  monets = [2,1]
-  monets_penny = amount.split('.')
-  @returnsp=[]
-  @returns =[]
-  @returnsm=[]
+  gived_amount = amount.split('.')
+  @returnsp, @returns, @returnsm = [], [], []
   #i have only coins
-  if monets_penny[1] == nil
-    return_penny(monets_penny,penny,0)
-  end
+  return_penny(gived_amount,0) if gived_amount[1] == nil
   #i have coins and monets
-  if monets_penny[1] != nil
-    return_coins_money(monets_penny,monets,penny)
-  end
-  print_money(amount).to_s
+  return_coins_money(gived_amount) if gived_amount[1] != nil
+  print_money(amount)
 end
 
-def return_coins_money(monets_penny,monets,penny)
+def return_coins_money(monets_penny)
   monets_penny[0] = monets_penny[0].gsub("£","")
-  return_penny(monets_penny,penny,1)
+  return_penny(monets_penny, 1)
   @returns = []
-  split_amount_of(monets,monets_penny[0].to_i)
+  split_amount_of(MONETS, monets_penny[0].to_i)
   @returnsm = @returns
 end
 
-def return_penny(monets_penny,penny,iterator)
+def return_penny(monets_penny,iterator)
   monets_penny[iterator].chomp('p')
-  split_amount_of(penny,monets_penny[iterator].to_i)
+  split_amount_of(PENNY,monets_penny[iterator].to_i)
   @returnsp = @returns 
 end
 
@@ -34,25 +29,26 @@ def mixed?(amount)
   amount.include?(".")
 end
 
-def prepare_print(array)
-  tmp = Hash.new(0)
-  array.each {|v| tmp[v] += 1 }
+def prepare_print(data)
+  tmp = Hash.new{0}
+  data.each {|v| tmp[v] += 1}
   tmp = tmp.sort_by {|k,v| k}
 end
 
-def mur (array,monets =false)
-  b = prepare_print(array)
-  output = ""
-  b.each do |k, v|
-    output +=  (monets ?  "#{v}x#{k}p " : " #{v}x£#{k}")
-  end
+def printing_template (data, monets = false)
+  result, output = prepare_print(data), ""
+  result.each { |key, value| output += which_template(monets,value,key) }
   output.chomp(' ')
 end
-
+ 
+def which_template(monets,value,key)
+  return (monets ?  "#{value}x#{key}p " : " #{value}x£#{key}")
+end
+ 
 def print_money(amount)
   output = ""
-  output += mur(@returnsp,true)
-  output += mur(@returnsm) if mixed?(amount)
+  output += printing_template(@returnsp,true)
+  output += printing_template(@returnsm) if mixed?(amount)
   output
 end
 
